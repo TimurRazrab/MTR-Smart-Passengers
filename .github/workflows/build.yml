@@ -3,6 +3,9 @@ name: Build MTR Smart Passengers
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -17,8 +20,19 @@ jobs:
         with:
           distribution: temurin
           java-version: '16'
+          cache: gradle
 
-      - name: Check project files
-        run: |
-          echo "GitHub Actions is working!"
-          echo "Next we will add the Forge mod source code."
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '7.3.3'
+
+      - name: Build mod
+        run: gradle build --no-daemon
+
+      - name: Upload mod JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: MTR-Smart-Passengers
+          path: build/libs/*.jar
+          if-no-files-found: error
