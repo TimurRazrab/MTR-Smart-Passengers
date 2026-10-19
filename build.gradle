@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[5.1,5.2)'
+}
+
+group = 'com.mtr.smartpassengers'
+version = '1.0.0'
+
+base {
+    archivesName = 'MTR-Smart-Passengers'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(16)
+    }
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.17.1'
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.17.1-37.1.1'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
