@@ -1,0 +1,11 @@
+
+package com.mtr.smartpassengers;
+
+import net.minecraftforge.fml.common.Mod;
+
+@Mod("mtr_smart_passengers")
+public class SmartPassengersMod {
+    public SmartPassengersMod() {
+        System.out.println("MTR Smart Passengers loaded!");
+    }
+}
