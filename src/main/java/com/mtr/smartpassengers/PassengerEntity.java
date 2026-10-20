@@ -27,10 +27,11 @@ public class PassengerEntity extends PathfinderMob {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return PathfinderMob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 20.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.25D)
-                .add(Attributes.FOLLOW_RANGE, 16.0D);
+    return PathfinderMob.createMobAttributes()
+            .add(Attributes.MAX_HEALTH, 20.0D)
+            .add(Attributes.MOVEMENT_SPEED, 0.10D)
+            .add(Attributes.FOLLOW_RANGE, 16.0D);
+    
     }
 
     @Override
@@ -39,7 +40,7 @@ public class PassengerEntity extends PathfinderMob {
 
         this.goalSelector.addGoal(
                 1,
-                new RandomStrollGoal(this, 0.8D)
+                new RandomStrollGoal(this, 0.6D)
         );
 
         this.goalSelector.addGoal(
