@@ -1,4 +1,3 @@
-
 package com.mtr.smartpassengers;
 
 import net.minecraft.network.chat.TextComponent;
@@ -27,29 +26,31 @@ public class PassengerEntity extends PathfinderMob {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-    return PathfinderMob.createMobAttributes()
-            .add(Attributes.MAX_HEALTH, 20.0D)
-            .add(Attributes.MOVEMENT_SPEED, 0.10D)
-            .add(Attributes.FOLLOW_RANGE, 16.0D);
-    
+        return PathfinderMob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.10D)
+                .add(Attributes.FOLLOW_RANGE, 16.0D);
     }
 
     @Override
     protected void registerGoals() {
         super.registerGoals();
 
+        // Спокойно гуляет по окрестностям.
         this.goalSelector.addGoal(
-                1,
+                5,
                 new RandomStrollGoal(this, 0.6D)
         );
 
+        // Смотрит на игроков поблизости.
         this.goalSelector.addGoal(
-                2,
+                6,
                 new LookAtPlayerGoal(this, Player.class, 8.0F)
         );
 
+        // Иногда оглядывается по сторонам.
         this.goalSelector.addGoal(
-                3,
+                7,
                 new RandomLookAroundGoal(this)
         );
     }
